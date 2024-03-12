@@ -1,4 +1,5 @@
 ﻿using Grpc.Core;
+using Medina;
 
 namespace Server;
 
@@ -14,6 +15,7 @@ class Program
         {
             server = new Grpc.Core.Server() 
             {
+                Services = { PersonaService.BindService(new PersonaServiceImpl()) },
                 Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
             };
 

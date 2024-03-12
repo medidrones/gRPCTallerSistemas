@@ -5,6 +5,7 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "proto", "proto", "{C40F8029-B5BB-4E6D-9FEE-75F32C288211}"
 	ProjectSection(SolutionItems) = preProject
+		persona.proto = persona.proto
 		serviceCode.proto = serviceCode.proto
 	EndProjectSection
 EndProject

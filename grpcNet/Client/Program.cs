@@ -19,7 +19,21 @@ class Program
             }
         });
 
-        var client = new Operaciones.OperacionesClient(canal);
+        var persona = new Persona() 
+        {
+            Nombre = "Jorge",
+            Apellido = "Medina",
+            Email = "medicode.developer@gmail.com"
+        };
+
+        var request = new PersonaRequest()
+        {
+            Persona = persona
+        };
+
+        var client = new PersonaService.PersonaServiceClient(canal);
+        var response = client.RegistrarPersona(request);
+        Console.WriteLine(response.Resultado);        
 
         canal.ShutdownAsync().Wait();
         Console.ReadKey();
