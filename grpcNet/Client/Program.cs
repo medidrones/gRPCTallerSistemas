@@ -7,11 +7,11 @@ class Program
 {
     const string serverPoint = "127.0.0.1:50008";
 
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         Channel canal = new Channel(serverPoint, ChannelCredentials.Insecure);
 
-        canal.ConnectAsync().ContinueWith((task) =>
+        await canal.ConnectAsync().ContinueWith((task) =>
         {
             if (task.Status == TaskStatus.RanToCompletion)
             {
@@ -26,14 +26,25 @@ class Program
             Email = "medicode.developer@gmail.com"
         };
 
-        var request = new PersonaRequest()
+        /*var request = new PersonaRequest()
+        {
+            Persona = persona
+        };*/
+
+        var request = new ServerMultiplePersonaRequest()
         {
             Persona = persona
         };
 
         var client = new PersonaService.PersonaServiceClient(canal);
-        var response = client.RegistrarPersona(request);
-        Console.WriteLine(response.Resultado);        
+        //var response = client.RegistrarPersona(request);
+        var response = client.RegistrarPersonasServidorMultiple(request);
+
+        while (await response.ResponseStream.MoveNext())
+        {
+            Console.WriteLine(response.ResponseStream.Current.Resultado);
+            await Task.Delay(250);
+        }               
 
         canal.ShutdownAsync().Wait();
         Console.ReadKey();
