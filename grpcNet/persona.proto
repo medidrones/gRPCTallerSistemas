@@ -29,6 +29,16 @@ message ServerMultiplePersonaResponse
 	string resultado = 1;
 }
 
+message ClientMultiplePersonaRequest
+{
+	Persona persona = 1;
+}
+
+message ClientMultiplePersonaResponse 
+{
+	string resultado = 1;
+}
+
 service PersonaService 
 {
 	// gRPC Unary
@@ -36,4 +46,7 @@ service PersonaService
 
 	//gRPC Server Streaming
 	rpc RegistrarPersonasServidorMultiple(ServerMultiplePersonaRequest) returns (stream ServerMultiplePersonaResponse){}
+
+	//gRPC Client Streaming
+	rpc RegistrarPersonaClientMultiple(stream ClientMultiplePersonaRequest) returns (ClientMultiplePersonaResponse){}
 }

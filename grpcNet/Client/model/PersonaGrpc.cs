@@ -53,6 +53,10 @@ namespace Medina {
     static readonly grpc::Marshaller<global::Medina.ServerMultiplePersonaRequest> __Marshaller_medina_ServerMultiplePersonaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Medina.ServerMultiplePersonaRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Medina.ServerMultiplePersonaResponse> __Marshaller_medina_ServerMultiplePersonaResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Medina.ServerMultiplePersonaResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Medina.ClientMultiplePersonaRequest> __Marshaller_medina_ClientMultiplePersonaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Medina.ClientMultiplePersonaRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Medina.ClientMultiplePersonaResponse> __Marshaller_medina_ClientMultiplePersonaResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Medina.ClientMultiplePersonaResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Medina.PersonaRequest, global::Medina.PersonaResponse> __Method_RegistrarPersona = new grpc::Method<global::Medina.PersonaRequest, global::Medina.PersonaResponse>(
@@ -69,6 +73,14 @@ namespace Medina {
         "RegistrarPersonasServidorMultiple",
         __Marshaller_medina_ServerMultiplePersonaRequest,
         __Marshaller_medina_ServerMultiplePersonaResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Medina.ClientMultiplePersonaRequest, global::Medina.ClientMultiplePersonaResponse> __Method_RegistrarPersonaClientMultiple = new grpc::Method<global::Medina.ClientMultiplePersonaRequest, global::Medina.ClientMultiplePersonaResponse>(
+        grpc::MethodType.ClientStreaming,
+        __ServiceName,
+        "RegistrarPersonaClientMultiple",
+        __Marshaller_medina_ClientMultiplePersonaRequest,
+        __Marshaller_medina_ClientMultiplePersonaResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -101,6 +113,18 @@ namespace Medina {
       /// <returns>A task indicating completion of the handler.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task RegistrarPersonasServidorMultiple(global::Medina.ServerMultiplePersonaRequest request, grpc::IServerStreamWriter<global::Medina.ServerMultiplePersonaResponse> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///gRPC Client Streaming
+      /// </summary>
+      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Medina.ClientMultiplePersonaResponse> RegistrarPersonaClientMultiple(grpc::IAsyncStreamReader<global::Medina.ClientMultiplePersonaRequest> requestStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -206,6 +230,28 @@ namespace Medina {
       {
         return CallInvoker.AsyncServerStreamingCall(__Method_RegistrarPersonasServidorMultiple, null, options, request);
       }
+      /// <summary>
+      ///gRPC Client Streaming
+      /// </summary>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncClientStreamingCall<global::Medina.ClientMultiplePersonaRequest, global::Medina.ClientMultiplePersonaResponse> RegistrarPersonaClientMultiple(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RegistrarPersonaClientMultiple(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///gRPC Client Streaming
+      /// </summary>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncClientStreamingCall<global::Medina.ClientMultiplePersonaRequest, global::Medina.ClientMultiplePersonaResponse> RegistrarPersonaClientMultiple(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncClientStreamingCall(__Method_RegistrarPersonaClientMultiple, null, options);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override PersonaServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -221,7 +267,8 @@ namespace Medina {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_RegistrarPersona, serviceImpl.RegistrarPersona)
-          .AddMethod(__Method_RegistrarPersonasServidorMultiple, serviceImpl.RegistrarPersonasServidorMultiple).Build();
+          .AddMethod(__Method_RegistrarPersonasServidorMultiple, serviceImpl.RegistrarPersonasServidorMultiple)
+          .AddMethod(__Method_RegistrarPersonaClientMultiple, serviceImpl.RegistrarPersonaClientMultiple).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -233,6 +280,7 @@ namespace Medina {
     {
       serviceBinder.AddMethod(__Method_RegistrarPersona, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Medina.PersonaRequest, global::Medina.PersonaResponse>(serviceImpl.RegistrarPersona));
       serviceBinder.AddMethod(__Method_RegistrarPersonasServidorMultiple, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Medina.ServerMultiplePersonaRequest, global::Medina.ServerMultiplePersonaResponse>(serviceImpl.RegistrarPersonasServidorMultiple));
+      serviceBinder.AddMethod(__Method_RegistrarPersonaClientMultiple, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Medina.ClientMultiplePersonaRequest, global::Medina.ClientMultiplePersonaResponse>(serviceImpl.RegistrarPersonaClientMultiple));
     }
 
   }

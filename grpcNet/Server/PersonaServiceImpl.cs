@@ -34,4 +34,21 @@ public class PersonaServiceImpl : PersonaServiceBase
             await responseStream.WriteAsync(response);
         }
     }
+
+    public override async Task<ClientMultiplePersonaResponse> RegistrarPersonaClientMultiple(IAsyncStreamReader<ClientMultiplePersonaRequest> requestStream, ServerCallContext context)
+    {
+        string resultado = "";
+
+        while (await requestStream.MoveNext())
+        {
+            resultado += String.Format("Request Mensaje en el Servidor {0} {1}", requestStream.Current.Persona.Email, Environment.NewLine);
+        }
+
+        var responseMessage = new ClientMultiplePersonaResponse()
+        {
+            Resultado = resultado
+        };
+
+        return responseMessage;
+    }    
 }

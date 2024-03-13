@@ -30,12 +30,17 @@ namespace Medina {
             "IiQKD1BlcnNvbmFSZXNwb25zZRIRCglyZXN1bHRhZG8YASABKAkiQAocU2Vy",
             "dmVyTXVsdGlwbGVQZXJzb25hUmVxdWVzdBIgCgdwZXJzb25hGAEgASgLMg8u",
             "bWVkaW5hLlBlcnNvbmEiMgodU2VydmVyTXVsdGlwbGVQZXJzb25hUmVzcG9u",
-            "c2USEQoJcmVzdWx0YWRvGAEgASgJMs0BCg5QZXJzb25hU2VydmljZRJFChBS",
-            "ZWdpc3RyYXJQZXJzb25hEhYubWVkaW5hLlBlcnNvbmFSZXF1ZXN0GhcubWVk",
-            "aW5hLlBlcnNvbmFSZXNwb25zZSIAEnQKIVJlZ2lzdHJhclBlcnNvbmFzU2Vy",
-            "dmlkb3JNdWx0aXBsZRIkLm1lZGluYS5TZXJ2ZXJNdWx0aXBsZVBlcnNvbmFS",
-            "ZXF1ZXN0GiUubWVkaW5hLlNlcnZlck11bHRpcGxlUGVyc29uYVJlc3BvbnNl",
-            "IgAwAWIGcHJvdG8z"));
+            "c2USEQoJcmVzdWx0YWRvGAEgASgJIkAKHENsaWVudE11bHRpcGxlUGVyc29u",
+            "YVJlcXVlc3QSIAoHcGVyc29uYRgBIAEoCzIPLm1lZGluYS5QZXJzb25hIjIK",
+            "HUNsaWVudE11bHRpcGxlUGVyc29uYVJlc3BvbnNlEhEKCXJlc3VsdGFkbxgB",
+            "IAEoCTLAAgoOUGVyc29uYVNlcnZpY2USRQoQUmVnaXN0cmFyUGVyc29uYRIW",
+            "Lm1lZGluYS5QZXJzb25hUmVxdWVzdBoXLm1lZGluYS5QZXJzb25hUmVzcG9u",
+            "c2UiABJ0CiFSZWdpc3RyYXJQZXJzb25hc1NlcnZpZG9yTXVsdGlwbGUSJC5t",
+            "ZWRpbmEuU2VydmVyTXVsdGlwbGVQZXJzb25hUmVxdWVzdBolLm1lZGluYS5T",
+            "ZXJ2ZXJNdWx0aXBsZVBlcnNvbmFSZXNwb25zZSIAMAEScQoeUmVnaXN0cmFy",
+            "UGVyc29uYUNsaWVudE11bHRpcGxlEiQubWVkaW5hLkNsaWVudE11bHRpcGxl",
+            "UGVyc29uYVJlcXVlc3QaJS5tZWRpbmEuQ2xpZW50TXVsdGlwbGVQZXJzb25h",
+            "UmVzcG9uc2UiACgBYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -43,7 +48,9 @@ namespace Medina {
             new pbr::GeneratedClrTypeInfo(typeof(global::Medina.PersonaRequest), global::Medina.PersonaRequest.Parser, new[]{ "Persona" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Medina.PersonaResponse), global::Medina.PersonaResponse.Parser, new[]{ "Resultado" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Medina.ServerMultiplePersonaRequest), global::Medina.ServerMultiplePersonaRequest.Parser, new[]{ "Persona" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Medina.ServerMultiplePersonaResponse), global::Medina.ServerMultiplePersonaResponse.Parser, new[]{ "Resultado" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Medina.ServerMultiplePersonaResponse), global::Medina.ServerMultiplePersonaResponse.Parser, new[]{ "Resultado" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Medina.ClientMultiplePersonaRequest), global::Medina.ClientMultiplePersonaRequest.Parser, new[]{ "Persona" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Medina.ClientMultiplePersonaResponse), global::Medina.ClientMultiplePersonaResponse.Parser, new[]{ "Resultado" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1041,6 +1048,395 @@ namespace Medina {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(ServerMultiplePersonaResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Resultado.Length != 0) {
+        Resultado = other.Resultado;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Resultado = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Resultado = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ClientMultiplePersonaRequest : pb::IMessage<ClientMultiplePersonaRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ClientMultiplePersonaRequest> _parser = new pb::MessageParser<ClientMultiplePersonaRequest>(() => new ClientMultiplePersonaRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ClientMultiplePersonaRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Medina.PersonaReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ClientMultiplePersonaRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ClientMultiplePersonaRequest(ClientMultiplePersonaRequest other) : this() {
+      persona_ = other.persona_ != null ? other.persona_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ClientMultiplePersonaRequest Clone() {
+      return new ClientMultiplePersonaRequest(this);
+    }
+
+    /// <summary>Field number for the "persona" field.</summary>
+    public const int PersonaFieldNumber = 1;
+    private global::Medina.Persona persona_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Medina.Persona Persona {
+      get { return persona_; }
+      set {
+        persona_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ClientMultiplePersonaRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ClientMultiplePersonaRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Persona, other.Persona)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (persona_ != null) hash ^= Persona.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (persona_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Persona);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (persona_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Persona);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (persona_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Persona);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ClientMultiplePersonaRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.persona_ != null) {
+        if (persona_ == null) {
+          Persona = new global::Medina.Persona();
+        }
+        Persona.MergeFrom(other.Persona);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (persona_ == null) {
+              Persona = new global::Medina.Persona();
+            }
+            input.ReadMessage(Persona);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (persona_ == null) {
+              Persona = new global::Medina.Persona();
+            }
+            input.ReadMessage(Persona);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ClientMultiplePersonaResponse : pb::IMessage<ClientMultiplePersonaResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ClientMultiplePersonaResponse> _parser = new pb::MessageParser<ClientMultiplePersonaResponse>(() => new ClientMultiplePersonaResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ClientMultiplePersonaResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Medina.PersonaReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ClientMultiplePersonaResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ClientMultiplePersonaResponse(ClientMultiplePersonaResponse other) : this() {
+      resultado_ = other.resultado_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ClientMultiplePersonaResponse Clone() {
+      return new ClientMultiplePersonaResponse(this);
+    }
+
+    /// <summary>Field number for the "resultado" field.</summary>
+    public const int ResultadoFieldNumber = 1;
+    private string resultado_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Resultado {
+      get { return resultado_; }
+      set {
+        resultado_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ClientMultiplePersonaResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ClientMultiplePersonaResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Resultado != other.Resultado) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Resultado.Length != 0) hash ^= Resultado.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Resultado.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Resultado);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Resultado.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Resultado);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Resultado.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Resultado);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ClientMultiplePersonaResponse other) {
       if (other == null) {
         return;
       }

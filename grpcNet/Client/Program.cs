@@ -26,25 +26,23 @@ class Program
             Email = "medicode.developer@gmail.com"
         };
 
-        /*var request = new PersonaRequest()
-        {
-            Persona = persona
-        };*/
-
-        var request = new ServerMultiplePersonaRequest()
+        var client = new PersonaService.PersonaServiceClient(canal);
+        var request = new ClientMultiplePersonaRequest()
         {
             Persona = persona
         };
 
-        var client = new PersonaService.PersonaServiceClient(canal);
-        //var response = client.RegistrarPersona(request);
-        var response = client.RegistrarPersonasServidorMultiple(request);
+        var stream = client.RegistrarPersonaClientMultiple();
 
-        while (await response.ResponseStream.MoveNext())
+        foreach (int i in Enumerable.Range(1, 10))
         {
-            Console.WriteLine(response.ResponseStream.Current.Resultado);
-            await Task.Delay(250);
-        }               
+            await stream.RequestStream.WriteAsync(request);
+        }
+
+        await stream.RequestStream.CompleteAsync();
+        var response = await stream.ResponseAsync;
+
+        Console.WriteLine(response.Resultado);
 
         canal.ShutdownAsync().Wait();
         Console.ReadKey();
