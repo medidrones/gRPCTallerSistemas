@@ -17,32 +17,43 @@ class Program
             {
                 Console.WriteLine("El cliente se conecto al servidor GRPC correctamente");
             }
-        });
-
-        var persona = new Persona() 
-        {
-            Nombre = "Jorge",
-            Apellido = "Medina",
-            Email = "medicode.developer@gmail.com"
-        };
+        });        
 
         var client = new PersonaService.PersonaServiceClient(canal);
-        var request = new ClientMultiplePersonaRequest()
-        {
-            Persona = persona
+
+        Persona[] personaCollection = {
+            new Persona() { Email = "medina@gmail.com" }, 
+            new Persona() { Email = "jorge@gmail.com" },
+            new Persona() { Email = "ingrid@gmail.com" }, 
+            new Persona() { Email = "nestor@gmail.com" }, 
+            new Persona() { Email = "maria@gmail.com" } 
         };
 
-        var stream = client.RegistrarPersonaClientMultiple();
+        var stream = client.RegistrarPersonaBidireccional();
 
-        foreach (int i in Enumerable.Range(1, 10))
+        foreach (var persona in personaCollection)
         {
+            Console.WriteLine("Enviando al servidor:" + persona.Email);
+
+            var request = new BidireccionalPersonaRequest()
+            {
+                Persona = persona
+            };
+            
             await stream.RequestStream.WriteAsync(request);
         }
 
         await stream.RequestStream.CompleteAsync();
-        var response = await stream.ResponseAsync;
 
-        Console.WriteLine(response.Resultado);
+        var responseCollection = Task.Run(async () =>
+        {
+            while (await stream.ResponseStream.MoveNext())
+            {
+                Console.WriteLine("El cliente esta recibiendo del servidor {0} {1}", stream.ResponseStream.Current.Resultado, Environment.NewLine);
+            }
+        });
+
+        await responseCollection;
 
         canal.ShutdownAsync().Wait();
         Console.ReadKey();

@@ -50,5 +50,21 @@ public class PersonaServiceImpl : PersonaServiceBase
         };
 
         return responseMessage;
-    }    
+    }
+
+    public override async Task RegistrarPersonaBidireccional(IAsyncStreamReader<BidireccionalPersonaRequest> requestStream, IServerStreamWriter<BidireccionalPersonaResponse> responseStream, ServerCallContext context)
+    {
+        while (await requestStream.MoveNext())
+        {
+            var  mensaje = String.Format("Comunicacion Bidireccional: {0} {1}", requestStream.Current.Persona.Email, Environment.NewLine);
+            Console.WriteLine(mensaje);
+
+            var response = new BidireccionalPersonaResponse()
+            {
+                Resultado = mensaje
+            };
+
+            await responseStream.WriteAsync(response);
+        }
+    }
 }

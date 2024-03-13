@@ -39,6 +39,16 @@ message ClientMultiplePersonaResponse
 	string resultado = 1;
 }
 
+message BidireccionalPersonaRequest
+{
+	Persona persona = 1;
+}
+
+message BidireccionalPersonaResponse 
+{
+	string resultado = 1;
+}
+
 service PersonaService 
 {
 	// gRPC Unary
@@ -49,4 +59,7 @@ service PersonaService
 
 	//gRPC Client Streaming
 	rpc RegistrarPersonaClientMultiple(stream ClientMultiplePersonaRequest) returns (ClientMultiplePersonaResponse){}
+
+	//gRPC Bidireccional Streaming
+	rpc RegistrarPersonaBidireccional(stream BidireccionalPersonaRequest) returns (stream BidireccionalPersonaResponse){}
 }

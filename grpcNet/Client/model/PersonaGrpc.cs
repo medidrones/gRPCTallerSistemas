@@ -57,6 +57,10 @@ namespace Medina {
     static readonly grpc::Marshaller<global::Medina.ClientMultiplePersonaRequest> __Marshaller_medina_ClientMultiplePersonaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Medina.ClientMultiplePersonaRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Medina.ClientMultiplePersonaResponse> __Marshaller_medina_ClientMultiplePersonaResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Medina.ClientMultiplePersonaResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Medina.BidireccionalPersonaRequest> __Marshaller_medina_BidireccionalPersonaRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Medina.BidireccionalPersonaRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Medina.BidireccionalPersonaResponse> __Marshaller_medina_BidireccionalPersonaResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Medina.BidireccionalPersonaResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Medina.PersonaRequest, global::Medina.PersonaResponse> __Method_RegistrarPersona = new grpc::Method<global::Medina.PersonaRequest, global::Medina.PersonaResponse>(
@@ -81,6 +85,14 @@ namespace Medina {
         "RegistrarPersonaClientMultiple",
         __Marshaller_medina_ClientMultiplePersonaRequest,
         __Marshaller_medina_ClientMultiplePersonaResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Medina.BidireccionalPersonaRequest, global::Medina.BidireccionalPersonaResponse> __Method_RegistrarPersonaBidireccional = new grpc::Method<global::Medina.BidireccionalPersonaRequest, global::Medina.BidireccionalPersonaResponse>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "RegistrarPersonaBidireccional",
+        __Marshaller_medina_BidireccionalPersonaRequest,
+        __Marshaller_medina_BidireccionalPersonaResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -125,6 +137,19 @@ namespace Medina {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Medina.ClientMultiplePersonaResponse> RegistrarPersonaClientMultiple(grpc::IAsyncStreamReader<global::Medina.ClientMultiplePersonaRequest> requestStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      ///gRPC Bidireccional Streaming
+      /// </summary>
+      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="responseStream">Used for sending responses back to the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>A task indicating completion of the handler.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task RegistrarPersonaBidireccional(grpc::IAsyncStreamReader<global::Medina.BidireccionalPersonaRequest> requestStream, grpc::IServerStreamWriter<global::Medina.BidireccionalPersonaResponse> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -252,6 +277,28 @@ namespace Medina {
       {
         return CallInvoker.AsyncClientStreamingCall(__Method_RegistrarPersonaClientMultiple, null, options);
       }
+      /// <summary>
+      ///gRPC Bidireccional Streaming
+      /// </summary>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Medina.BidireccionalPersonaRequest, global::Medina.BidireccionalPersonaResponse> RegistrarPersonaBidireccional(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RegistrarPersonaBidireccional(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      ///gRPC Bidireccional Streaming
+      /// </summary>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Medina.BidireccionalPersonaRequest, global::Medina.BidireccionalPersonaResponse> RegistrarPersonaBidireccional(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_RegistrarPersonaBidireccional, null, options);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override PersonaServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -268,7 +315,8 @@ namespace Medina {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_RegistrarPersona, serviceImpl.RegistrarPersona)
           .AddMethod(__Method_RegistrarPersonasServidorMultiple, serviceImpl.RegistrarPersonasServidorMultiple)
-          .AddMethod(__Method_RegistrarPersonaClientMultiple, serviceImpl.RegistrarPersonaClientMultiple).Build();
+          .AddMethod(__Method_RegistrarPersonaClientMultiple, serviceImpl.RegistrarPersonaClientMultiple)
+          .AddMethod(__Method_RegistrarPersonaBidireccional, serviceImpl.RegistrarPersonaBidireccional).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -281,6 +329,7 @@ namespace Medina {
       serviceBinder.AddMethod(__Method_RegistrarPersona, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Medina.PersonaRequest, global::Medina.PersonaResponse>(serviceImpl.RegistrarPersona));
       serviceBinder.AddMethod(__Method_RegistrarPersonasServidorMultiple, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Medina.ServerMultiplePersonaRequest, global::Medina.ServerMultiplePersonaResponse>(serviceImpl.RegistrarPersonasServidorMultiple));
       serviceBinder.AddMethod(__Method_RegistrarPersonaClientMultiple, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Medina.ClientMultiplePersonaRequest, global::Medina.ClientMultiplePersonaResponse>(serviceImpl.RegistrarPersonaClientMultiple));
+      serviceBinder.AddMethod(__Method_RegistrarPersonaBidireccional, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Medina.BidireccionalPersonaRequest, global::Medina.BidireccionalPersonaResponse>(serviceImpl.RegistrarPersonaBidireccional));
     }
 
   }
