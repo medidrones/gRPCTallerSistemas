@@ -2,15 +2,53 @@
 
 option csharp_namespace = "GrpcMantenimiento";
 
+import "google/api/annotations.proto";
+
 package productoit;
 
 service ProductoIt 
 {
-	rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse){}
-	rpc ReadProduct(ReadProductRequest) returns (ReadProductResponse){}
-	rpc ListProduct(GetAllRequest) returns (GetAllResponse){}
-	rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse){}
-	rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse){}
+	rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse)
+	{
+		option(google.api.http) = 
+		{
+			post: "/v1/product",
+			body: "*"
+		};
+	}
+
+	rpc ReadProduct(ReadProductRequest) returns (ReadProductResponse)
+	{
+		option(google.api.http) = 
+		{
+			get: "/v1/product/{id}"
+		};
+	}
+
+	rpc ListProduct(GetAllRequest) returns (GetAllResponse)
+	{
+		option(google.api.http) = 
+		{
+			get: "/v1/products"
+		};
+	}
+
+	rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse)
+	{
+		option(google.api.http) = 
+		{
+			put: "/v1/product",
+			body: "*"
+		};
+	}
+
+	rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse)
+	{
+		option(google.api.http) = 
+		{
+			delete: "/v1/product/{id}"
+		};
+	}
 }
 
 message CreateProductRequest 
